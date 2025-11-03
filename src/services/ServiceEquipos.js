@@ -15,6 +15,16 @@ export default class ServiceEquipos{
         })
     }
 
+    getJugadores(){
+        return new Promise(function(resolve){
+            let url = Global.urlEquipos;
+            let request = "api/Jugadores";
+            axios.get(url + request).then(response=>{
+                resolve(response.data)
+            })
+        })
+    }
+
     getJugadoresEquipo(idequipo){
         return new Promise(function(resolve){
             let jugadores = []
@@ -44,6 +54,17 @@ export default class ServiceEquipos{
             axios.get(url + request).then(response=>{
                 console.log(response.data)
               resolve(response.data)  
+            })
+        })
+    }
+
+    traspasarJugador(idjugador, idequipo){
+        return new Promise(function(resolve){
+            let url = Global.urlEquipos;
+            let request = "api/Jugadores/TraspasarJugador/" + idjugador + "/" + idequipo;
+            console.log(request)
+            axios.put(url + request).then(response=>{
+                resolve(response)
             })
         })
     }
