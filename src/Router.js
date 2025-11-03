@@ -3,12 +3,14 @@ import HomeComponent from './components/HomeComponent.vue';
 import EquiposComponent from './components/EquiposComponent.vue';
 import JugadoresEquipo from './components/JugadoresEquipo.vue';
 import DetalleJugador from './components/DetalleJugador.vue';
+import BuscarJugador from './components/BuscarJugador.vue';
 
 const routes = [
     {path: "/", component: HomeComponent},
     {path: "/equipos", component: EquiposComponent},
     {path: "/jugadores/:idequipo", component: JugadoresEquipo},
     {path: "/details/:idjugador", component: DetalleJugador},
+    {path: "/buscarjugador/:nombrejugador", component: BuscarJugador}
 ];
 
 const router = createRouter({

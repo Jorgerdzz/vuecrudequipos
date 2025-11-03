@@ -37,4 +37,15 @@ export default class ServiceEquipos{
         })
     }
 
+    getJugadorPorNombre(nombre){
+        return new Promise(function(resolve){
+            let url = Global.urlEquipos;
+            let request = "api/Jugadores/FindJugadores/" + nombre;
+            axios.get(url + request).then(response=>{
+                console.log(response.data)
+              resolve(response.data)  
+            })
+        })
+    }
+
 }

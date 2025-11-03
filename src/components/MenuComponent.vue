@@ -46,17 +46,16 @@
                 </ul>
                 
                 <!-- Formulario de Búsqueda con estilo integrado -->
-                <form class="d-flex" role="search">
+                <form class="d-flex w-25" role="search">
                     <div class="input-group">
-                        <!-- Estilo del input: border-primary y fondo oscuro para integrarse con la barra -->
-                        <input class="form-control bg-dark text-light border-warning" 
-                               type="search" 
-                               placeholder="Buscar equipo..." 
-                               aria-label="Search"/>
-                        <!-- Botón con color primario para un toque moderno -->
-                        <button class="btn btn-warning fw-bold text-dark" type="submit">
+                        <input class="form-control bg-dark text-light border-warning search-input-placeholder" 
+                            type="search" 
+                            placeholder="Buscar jugador por nombre..."
+                            v-model="nombre" 
+                            aria-label="Search"/>
+                        <router-link :to="'/buscarjugador/' + nombre" class="btn btn-warning fw-bold text-dark" type="submit">
                             <i class="bi bi-search"></i> Buscar
-                        </button>
+                        </router-link>
                     </div>
                 </form>
                 
@@ -67,7 +66,12 @@
 
 <script>
     export default{
-        name: "MenuComponent"
+        name: "MenuComponent",
+        data(){
+            return{
+                nombre: ""
+            }
+        }
     }
 </script>
 
@@ -84,5 +88,11 @@
 
 .navbar-dark .navbar-nav .nav-link:hover {
     color: var(--bs-warning) !important; /* Resalta al pasar el ratón */
+}
+
+.search-input-placeholder::placeholder {
+    /* Usamos un color gris claro para contraste */
+    color: rgba(255, 255, 255, 0.5) !important; 
+    opacity: 1; /* Necesario en Firefox para override */
 }
 </style>
