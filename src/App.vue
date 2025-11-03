@@ -1,14 +1,15 @@
 <template>
-  <HomeComponent/>
+  <MenuComponent/>
+  <router-view/>
 </template>
 
 <script>
-import HomeComponent from './components/HomeComponent.vue'
+import MenuComponent from './components/MenuComponent.vue'
 
 export default {
   name: 'App',
   components: {
-    HomeComponent
+    MenuComponent
   }
 }
 </script>
