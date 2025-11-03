@@ -26,9 +26,11 @@
                         </p>
                         
                     </div>
-                    <div class="card-footer bg-warning text-dark fw-bold">
-                        Detalles del Jugador
-                    </div>
+
+                    <router-link :to="'/details/' + jugador.idJugador" class="btn btn-warning mt-auto fw-bold text-dark">
+                        <i class="bi bi-people-fill me-1"></i> Detalles del jugador
+                    </router-link>
+
                 </div>
             </div>
             

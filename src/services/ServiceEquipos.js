@@ -27,4 +27,14 @@ export default class ServiceEquipos{
         })
     }
 
+    getJugadorPorId(idjugador){
+        return new Promise(function(resolve){
+            let url = Global.urlEquipos;
+            let request = "api/Jugadores/" + idjugador;
+            axios.get(url + request).then(response=>{
+                resolve(response.data)
+            })
+        })
+    }
+
 }
