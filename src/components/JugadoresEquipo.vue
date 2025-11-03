@@ -13,24 +13,32 @@
                     
                     <div class="text-center bg-secondary p-2">
                          <img :src="jugador.imagen" class="img-fluid rounded-circle border border-3 border-warning my-3" 
-                             :alt="'Imagen de ' + jugador.nombre" 
-                             style="width: 150px; height: 150px; object-fit: cover;">
+                              :alt="'Imagen de ' + jugador.nombre" 
+                              style="width: 150px; height: 150px; object-fit: cover;">
                     </div>
                     
-                    <div class="card-body text-center">
+                    <div class="card-body text-center d-flex flex-column">
                         
                         <h3 class="card-title text-warning fw-bolder mb-1">{{jugador.nombre}}</h3>
                         
-                        <p class="card-text text-white-50 fs-5">
+                        <p class="card-text text-white-50 fs-5 mb-3">
                             <i class="bi bi-person-badge-fill me-1"></i> {{jugador.posicion}}
                         </p>
                         
                     </div>
+                    
+                    <div class="card-footer bg-dark border-0 p-3 d-grid gap-2">
 
-                    <router-link :to="'/details/' + jugador.idJugador" class="btn btn-warning mt-auto fw-bold text-dark">
-                        <i class="bi bi-people-fill me-1"></i> Detalles del jugador
-                    </router-link>
+                        <router-link :to="'/details/' + jugador.idJugador" class="btn btn-warning fw-bold text-dark">
+                            <i class="bi bi-info-circle-fill me-1"></i> Ver Detalles
+                        </router-link>
 
+                        <button @click="eliminarJugador(jugador.idJugador)" class="btn btn-danger fw-bold">
+                            <i class="bi bi-trash-fill me-1"></i> Eliminar Jugador
+                        </button>
+
+                    </div>
+                    
                 </div>
             </div>
             
@@ -45,13 +53,23 @@ const service = new ServiceEquipos();
         name: "JugadoresEquipo",
         data(){
             return{
-                jugadores: []
+                jugadores: [],
+            }
+        },
+        methods:{
+            getJugadoresEquipo(){
+                service.getJugadoresEquipo(this.$route.params.idequipo).then(result=>{
+                    this.jugadores = result
+                })
+            },
+            eliminarJugador(idjugador){
+                service.deleteJugador(idjugador).then(()=>{
+                    this.getJugadoresEquipo();
+                })
             }
         },
         mounted(){
-            service.getJugadoresEquipo(this.$route.params.idequipo).then(result=>{
-                this.jugadores = result
-            })
+            this.getJugadoresEquipo();
         }
     }
 </script>

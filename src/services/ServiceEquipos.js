@@ -69,4 +69,25 @@ export default class ServiceEquipos{
         })
     }
 
+    insertJugador(jugador){
+        return new Promise(function(resolve){
+            let url = Global.urlEquipos;
+            let request = "api/Jugadores";
+            axios.post(url + request, jugador).then(response=>{
+                resolve(response)
+            })
+        })
+    }
+
+    deleteJugador(idjugador){
+        return new Promise(function(resolve){
+            let url = Global.urlEquipos;
+            let request = "api/Jugadores/" + idjugador;
+            console.log(request);
+            axios.delete(url + request).then(response=>{
+              resolve(response)  
+            })
+        })
+    }
+
 }
