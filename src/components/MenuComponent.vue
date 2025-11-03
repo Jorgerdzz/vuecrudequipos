@@ -46,16 +46,16 @@
                 </ul>
                 
                 <!-- Formulario de Búsqueda con estilo integrado -->
-                <form class="d-flex w-25" role="search">
+                <form v-on:submit.prevent="buscarJugador()" class="d-flex w-25" role="search">
                     <div class="input-group">
                         <input class="form-control bg-dark text-light border-warning search-input-placeholder" 
                             type="search" 
                             placeholder="Buscar jugador por nombre..."
                             v-model="nombre" 
                             aria-label="Search"/>
-                        <router-link :to="'/buscarjugador/' + nombre" class="btn btn-warning fw-bold text-dark" type="submit">
+                        <button class="btn btn-warning fw-bold text-dark" type="submit">
                             <i class="bi bi-search"></i> Buscar
-                        </router-link>
+                        </button>
                     </div>
                 </form>
                 
@@ -70,6 +70,11 @@
         data(){
             return{
                 nombre: ""
+            }
+        },
+        methods:{
+            buscarJugador(){
+                this.$router.push("/buscarjugador/" + this.nombre)
             }
         }
     }
