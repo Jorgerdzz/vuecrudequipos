@@ -36,13 +36,6 @@
                         </router-link>
                     </li>
 
-                     <!-- Enlace para Crear un Nuevo Equipo (Ejemplo CRUD) -->
-                    <li class="nav-item">
-                        <router-link class="nav-link text-uppercase fw-semibold" to="/create">
-                            <i class="bi bi-plus-circle-fill me-1"></i> Crear Equipo
-                        </router-link>
-                    </li>
-
                     <li class="nav-item">
                         <router-link class="nav-link text-uppercase fw-semibold" to="/traspasos">
                             <i class="bi bi-plus-circle-fill me-1"></i> Traspasos
